@@ -1,0 +1,45 @@
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+p{
+  font-size: 14px;
+}
+body{
+  background: #008081;
+}
+
+.center-column{
+  width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.item-row{
+  margin: 10px;
+  padding: 20px;
+}
+
+.task{
+  margin-top: 10px;
+}
+
+#principal{
+  background: #DFDFDF;
+}
+
+#cria{
+  width: 100%;
+}
+
+#excluir{
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 800px){
+  .center-column{
+    width: 500px;
+  }
+}

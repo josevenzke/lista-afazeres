@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Afazeres</title>
+    <link rel="stylesheet" href="{% static "css/liststyle.css"%}">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+  </head>
+  <body>
+    <!-- Div Central -->
+    <div class="window center-column" id="principal">
+      <div class="title-bar">
+        <div class="title-bar-text">Afazeres</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <!-- Menu de Criação -->
+      <div class="window-body">
+        <form method="POST" id="form1" action="/">
+          {% csrf_token %}
+          {{form.title}}
+        </form>
+        <button id="cria" type="submit" form="form1" value="Submit">Criar</button>
+      <!-- Fim Menu de Criação -->
+
+      <!-- Carregamento das Tasks -->
+        {% for task in tasks %}
+            <div class="window task">
+            <div class="title-bar"
+            {% if task.complete == True %}
+              style="background: red;"
+            {% endif %}>
+              <div class="title-bar-text">{{task}}
+                {% if task.complete == True %}
+                  (COMPLETA)
+                {% endif %}
+            </div>
+              <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <a href="{% url 'deletar' task.id %}"><button aria-label="Close"></button></a>
+              </div>
+            </div>
+            <div class="window-body">
+              <a href="{% url 'atualizar' task.id %}"><button>Atualizar</button></a>
+              <a href="{% url 'deletar' task.id %}"><button>Excluir</button></a>
+            </div>
+          </div>
+      {% endfor %}
+      <!-- Fim do carregamento das Tasks -->
+      </div>
+    </div>
+    <!-- Fim da div Central-->
+  </body>
+</html>

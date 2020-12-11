@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Atualizar</title>
+    <link rel="stylesheet" href="{% static "css/liststyle.css"%}">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+  </head>
+  <body>
+    <div class="window center-column">
+      <div class="title-bar">
+        <div class="title-bar-text">Atualizar</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <form method="POST" id="form3" action="">
+          {% csrf_token %}
+
+          <label for="id_title">Titulo</label>{{form.title}}
+          {{form.complete}}<label for="id_complete">Completo: </label>
+        </form>
+        <button id='excluir' type="submit" form="form3" value="Submit">Atualizar</button>
+      </div>
+    </div>
+  </body>
+</html>

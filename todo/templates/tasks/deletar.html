@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Deletar</title>
+    <link rel="stylesheet" href="{% static "css/liststyle.css"%}">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+  </head>
+  <body>
+    <div class="window center-column">
+      <div class="title-bar">
+        <div class="title-bar-text">Exclusão</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <p>Tem certeza que deseja excluir "{{item}}" ?</p>
+        <a href="{% url 'list'%}"><button>Cancelar</button></a>
+        <form method="post" id='form2' action="">
+          {% csrf_token %}
+        </form>
+        <button id='excluir' type="submit" form="form2" value="Submit">Excluir</button>
+      </div>
+    </div>
+  </body>
+</html>
